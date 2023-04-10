@@ -1,24 +1,16 @@
-import { useState } from "react";
-import CreateLine from "./Components/CreateLine";
-import Button from "./Components/Button";
+import { useDispatch, useSelector } from "react-redux";
+import { decrement, increment } from "./da/slice";
+
+
 
 function App() {
-  const [name, setName] = useState('')
-  const [posts, setPosts] = useState([])
-
+  const count = useSelector((state)=>state.count)
+  const dispatch = useDispatch()
   return (
-    <div className="App">
-      <CreateLine name={name} setName={setName} setPosts={setPosts} posts={posts}/>
-
-      <br/><br/><br/>
-
-      <div>
-        {posts.map((el)=>(<div id={el.id}>{el.name} 
-        <Button 
-          text='delete' 
-          onClick={(el)=>{setPosts((posts)=>[...posts.filter((filte)=>filte.id != el.target.parentNode.id)])}}
-          /></div>))}
-      </div>
+    <div>
+      <button onClick={()=>{dispatch(increment())}}>increment</button>
+      {count}
+      <button onClick={()=>{dispatch(decrement())}}>decriment</button>
     </div>
   );
 }
