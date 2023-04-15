@@ -1,16 +1,31 @@
 import { useDispatch, useSelector } from "react-redux";
-import { decrement, increment } from "./da/slice";
+import { deleteFromList, addToList } from "./da/slice";
+import { useState } from "react";
 
 
 
 function App() {
   const count = useSelector((state)=>state.count)
   const dispatch = useDispatch()
+
+  const [input, setInput] = useState('')
+  
   return (
     <div>
-      <button onClick={()=>{dispatch(increment())}}>increment</button>
-      {count}
-      <button onClick={()=>{dispatch(decrement())}}>decriment</button>
+      <div>
+        <input value={input} onChange={(el)=>{setInput(el.target.value)}}/>
+        <button onClick={()=>dispatch(addToList(input))}>send</button>
+        <div>
+          {count.map((el)=>(
+            <>
+              <div>
+                <span>{el.text}</span>
+                <button id={el.id} onClick={(_button)=>dispatch(deleteFromList(_button))}>delete</button>
+              </div>
+            </>
+              ))}
+        </div>
+      </div>
     </div>
   );
 }

@@ -3,19 +3,19 @@ import {createSlice} from '@reduxjs/toolkit'
 const toolkit = createSlice({
     name: 'toolkit',
     initialState:{
-        count: 0,
+        count: [],
     },
     reducers:{
-        increment(state){
-            state.count = state.count +=1 
-            console.log('2')
+        addToList(state, inputs){
+            state.count.push({id: Math.random(), text: inputs.payload})
+            console.log(state.count)
         },
-        decrement(state){
-            state.count = state.count -=1
-            console.log("123456")
+        deleteFromList(state, _id){ //serializable error
+            console.log(_id.payload.target.id)
+            state.count = state.count.filter((el)=>el.id != _id.payload.target.id)
         }
     }
 })
 
 export default toolkit.reducer
-export const {increment, decrement} = toolkit.actions
+export const {addToList, deleteFromList} = toolkit.actions
