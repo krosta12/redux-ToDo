@@ -1,6 +1,8 @@
 import { useDispatch, useSelector } from "react-redux";
-import { deleteFromList, addToList } from "./da/slice";
+import { deleteFromList, addToList } from "./Redux/slice";
 import { useState } from "react";
+import { Button } from "./Components/Button";
+import { Input } from "./Components/Input";
 
 
 
@@ -13,31 +15,15 @@ function App() {
   return (
     <div>
       <div>
+        <Input value={input} setValue={(el)=>{setInput(el.target.value)}}/>
 
-        <input 
-          value={input} 
-          onChange={
-            (el)=>{setInput(el.target.value)}
-          }
-        />
-
-        <button 
-          onClick={
-            ()=>dispatch(addToList(input))
-          }>
-            send
-        </button>
-
+        <Button id  event={()=>dispatch(addToList(input))} text='send'/>
         <div>
           {count.map((el)=>(
             <>
               <div>
                 <span>{el.text}</span>
-                <button 
-                  id={el.id} 
-                  onClick={(_button)=>dispatch(deleteFromList(_button.target.id))}>
-                  delete
-                </button>
+                <Button id={el.id} event={(_button)=>dispatch(deleteFromList(_button.target.id))} text='delete'/>
               </div>
             </>
               ))}

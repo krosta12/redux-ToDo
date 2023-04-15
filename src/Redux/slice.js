@@ -8,11 +8,9 @@ const toolkit = createSlice({
     reducers:{
         addToList(state, inputs){
             state.count.push({id: Math.random(), text: inputs.payload})
-            console.log(state.count)
         },
         deleteFromList(state, _id){
             state.count = state.count.filter((el)=>el.id != _id.payload)
-            console.log(_id.payload)
         }
     }
 })
