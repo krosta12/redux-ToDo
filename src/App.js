@@ -20,7 +20,7 @@ function App() {
             <>
               <div>
                 <span>{el.text}</span>
-                <button id={el.id} onClick={(_button)=>dispatch(deleteFromList(_button))}>delete</button>
+                <button id={el.id} onClick={(_button)=>dispatch(deleteFromList(_button.target.id))}>delete</button>
               </div>
             </>
               ))}

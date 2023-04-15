@@ -11,8 +11,8 @@ const toolkit = createSlice({
             console.log(state.count)
         },
         deleteFromList(state, _id){ //serializable error
-            console.log(_id.payload.target.id)
-            state.count = state.count.filter((el)=>el.id != _id.payload.target.id)
+            state.count = state.count.filter((el)=>el.id != _id.payload)
+            console.log(_id.payload)
         }
     }
 })
