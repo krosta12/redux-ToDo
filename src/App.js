@@ -13,14 +13,31 @@ function App() {
   return (
     <div>
       <div>
-        <input value={input} onChange={(el)=>{setInput(el.target.value)}}/>
-        <button onClick={()=>dispatch(addToList(input))}>send</button>
+
+        <input 
+          value={input} 
+          onChange={
+            (el)=>{setInput(el.target.value)}
+          }
+        />
+
+        <button 
+          onClick={
+            ()=>dispatch(addToList(input))
+          }>
+            send
+        </button>
+
         <div>
           {count.map((el)=>(
             <>
               <div>
                 <span>{el.text}</span>
-                <button id={el.id} onClick={(_button)=>dispatch(deleteFromList(_button.target.id))}>delete</button>
+                <button 
+                  id={el.id} 
+                  onClick={(_button)=>dispatch(deleteFromList(_button.target.id))}>
+                  delete
+                </button>
               </div>
             </>
               ))}

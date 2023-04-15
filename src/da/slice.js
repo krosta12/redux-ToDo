@@ -10,12 +10,11 @@ const toolkit = createSlice({
             state.count.push({id: Math.random(), text: inputs.payload})
             console.log(state.count)
         },
-        deleteFromList(state, _id){ //serializable error
+        deleteFromList(state, _id){
             state.count = state.count.filter((el)=>el.id != _id.payload)
             console.log(_id.payload)
         }
     }
 })
-
 export default toolkit.reducer
 export const {addToList, deleteFromList} = toolkit.actions

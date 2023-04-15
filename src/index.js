@@ -10,5 +10,6 @@ import store from './da/store';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
         <Provider store = {store}>
-        <App /></Provider>
+                <App />
+        </Provider>
         );
