@@ -13,6 +13,7 @@ const toolkit = createSlice({
             state.count = state.count.filter((el)=>el.id != _id.payload)
         }
     }
+    // 
 })
 export default toolkit.reducer
 export const {addToList, deleteFromList} = toolkit.actions
